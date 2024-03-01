@@ -1,0 +1,66 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static "css/normalize.css" %}">
+    <link rel="stylesheet" href="{% static "css/signup.css" %}">
+    <title>Signup</title>
+</head>
+
+<body>
+    <div class="signup">
+        <div class="page">
+            <img src="{% static "img/logo.svg" %}" alt="logo" class="logo">
+
+            <div class="info">
+                <div class="header"><h2>Signup</h2></div>
+
+                <form action="" method="post" class="form">
+                    {% csrf_token %}
+                    <div class="form-inputs">
+                        <div class="form-field">
+                            <label for="username">USERNAME <span>*</span></label>
+                            {{form.username}}
+                        </div>
+            
+                        <div class="form-field">
+                            <label for="email">EMAIL <span>*</span></label>
+                            {{form.email}}
+                        </div>
+
+                        <div class="pwd-inputs">
+                            <div class="form-field">
+                                <label for="password">PASSWORD <span>*</span></label>
+                                {{form.password1}}
+                            </div>
+
+                            <div class="form-field">
+                                <label for="confirm_password">CONFIRM PASSWORD <span>*</span></label>
+                                {{form.password2}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {%if form.username.errors %}
+                        <p class="error">{{form.username.errors}}</p>
+                    {%elif form.password1.errors%}
+                        <p class="error">{{form.password1.errors}}</p>
+                    {% elif form.password2.errors %}
+                        <p class="error">{{form.password2.errors}}</p>
+                    {% endif %}
+
+                    <div class="button-inputs">
+                        <button type="submit">Signup</button>
+                    </div>
+                </form>
+
+                <div class="login"><p>Already have an acount? <a href="{% url "login" %}">Login Here</a></p></div>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>

@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/normalize.css" %}">
+    <link rel="stylesheet" href="{% static 'css/patient_dashboard.css' %}">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static "img/logo.svg" %}" alt="logo">
+            </div>  
+
+            <div class="account-details">
+                <img src="{{user_profile.profile_pic.url}}" alt="profile picture">
+                <div class="text-details">
+                    <div class="name">{{user_profile.firstname}} {{user_profile.surname}}</div>
+                    <div>{{user_profile.user.username}}</div>
+                    <div>{{user_profile.gender}}, {{user_profile.get_age}}</div>
+                    <div>{{user_profile.address}}, {{user_profile.city}}</div>
+                </div>
+            </div>
+
+            <div class="options">
+                <button type="button">SCAN QR CODE</button>
+                <button type="button">DOWNLOAD RECORDS</button>
+            </div>
+
+            <hr/>
+            <button type="button"><a href="{% url "logout" %}">Logout</a></button>
+        </div>
+
+
+        <div class="main">
+            <div class="welcome">WELCOME BACK!</div>
+
+            <form action="{% url "patient_dashboard" %}" method="get">
+                <div class="date-pick">
+                    <input type="date" name="date" id="date">
+                    <button type="submit"><img src="{% static "img/search.png" %}" alt="search button"></button>
+                </div>
+            </form>
+            
+            <div class="header"><h2>PATIENT RECORDS</h2></div>
+            
+            {% if no_records %}
+                <div class="scan">
+                    <button type="button"><span>+</span> Scan to display records</button>
+                </div>
+            
+            {% else %}
+                <div class="records">
+                    {% for record in user_records %}
+                        <div class="single-record">
+                            <div class="record-header">
+                                <div class="date">{{record.get_date}}</div>
+                                <div class="time">{{record.get_time}}</div>
+                            </div>
+
+                            <div class="record-body">
+                                <div class="line">
+                                    <div>Temperature</div>
+                                    <div>{{record.temperature}}°C</div>
+                                </div>
+
+                                <div class="line">
+                                    <div>Heart Rate</div>
+                                    <div>{{record.heart_rate}}</div>
+                                </div>
+
+                                <div class="line">
+                                    <div>Sugar Level</div>
+                                    <div>{{record.sugar_level}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                
+
+                {% endif %}
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

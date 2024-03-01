@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static "css/normalize.css" %}">
+    <link rel="stylesheet" href="{% static "css/profile_update.css" %}">
+    <title>Update Profile</title>
+</head>
+
+<body>
+    <div class="profile">
+        <div class="logo">
+            <img src="{% static "img/logo.svg" %}" alt="logo">
+        </div>
+
+        <h2>UPDATE PROFILE</h2>
+        <form action="" method="post" class="update-profile" enctype="multipart/form-data">
+
+                {% csrf_token %}
+                {{ form.profile_pic }}
+                
+                <div class="text-input">
+                    <div class="name-update">
+                        <div>
+                            <label for="surname">SURNAME</label>
+                            {{form.surname}}
+                        </div>
+
+                        <div>
+                            <label for="firstname">FIRST NAME</label>
+                            {{form.firstname}}
+                        </div>
+                    </div>
+
+                    <div class="location">
+                        <div class="address">
+                            <label for="address">ADDRESS</label>
+                            {{form.address}}
+                        </div>
+
+                        <div class="city">
+                            <label for="city">CITY</label>
+                            {{form.city}}
+                        </div>
+
+                        <div class="nationality">
+                            <label for="nationality">NATIONALITY</label>
+                            {{form.nationality}}
+                        </div>
+                    </div>
+                    
+                    <div class="extra-details">
+                        <div class="gender">
+                            <fieldset>
+                                <legend>GENDER</legend>
+                                {{form.gender.0}}
+
+                                {{form.gender.1}}
+                            </fieldset>
+                        </div>
+
+                        <div class="dob">
+                            <label for="dob">DATE OF BIRTH</label>
+                            {{form.dob}}
+                        </div>
+
+                        <div class="phone">
+                            <label for="phone">PHONE NUMBER</label>
+                            {{form.number}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confirm">
+                    <button type="submit">UPDATE PROFILE</button>
+                </div>
+        </form>
+    </div>
+</body>
+</html>

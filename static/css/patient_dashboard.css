@@ -1,0 +1,244 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #e0e0e0;
+}
+
+.dashboard {
+    display: flex;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: white;
+    width: 25vw;
+    height: 95vh;
+    align-items: center;
+}
+
+.logo {
+    filter: invert(22%) sepia(100%) saturate(1455%) hue-rotate(199deg) brightness(85%) contrast(98%);
+    margin-bottom: 1rem;
+}
+
+.logo img {
+    width: 8rem;
+}
+
+.account-details {
+    margin-top: 3rem;
+    background-color: #0C479D;
+    padding: 1rem;
+    width: 13rem;
+    height: 12rem;
+}
+
+.account-details img {
+    position: relative;
+    bottom: 4.2rem;
+    left: 3rem;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    margin: 0;
+}
+
+.text-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+    position: relative;
+    bottom: 2.8rem;
+}
+
+.text-details .name {
+    font-weight: 900;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+}
+
+.options button {
+    background-color: white;
+    color: rgb(71, 70, 70);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.options button:hover {
+    background-color: #0C479D;
+    color: white;
+}
+
+.sidebar hr {
+    width: 75%;
+    height: 2px;
+    margin: 1rem 0;
+    background-color: #0C479D; 
+    border: none;
+}
+
+.sidebar > button {
+    background-color: #1151b1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 8rem;
+}
+
+.sidebar button:hover {
+    background-color: #003874;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    width: 75vw;
+    height: 100vh;
+}
+
+.welcome {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #0C479D;
+}
+
+.date-pick, .header {
+    display: flex;
+    justify-content: center;;
+}
+
+.date-pick input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 15rem;
+    text-align: center;
+    color: #0C479D;
+    font-weight: 700;
+}
+
+.date-pick input[type="date"]:focus {
+    border-color: #0C479D;
+    outline: none;
+}
+
+.date-pick button {
+    position: relative;
+    background-color: white;
+    top: 0.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height:2.5rem;
+}
+
+.date-pick img {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: white;
+}
+
+.main h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #0C479D;
+}
+
+.scan { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.scan > button {
+    background-color: white;
+    color: #0C479D;
+    padding: 3px 5px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    width: 12rem;
+}
+
+.scan > button:hover {
+    background-color: #0C479D;
+    color: white;
+}
+
+.scan > button > span {
+    font-weight: 1000;
+}
+
+.records {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.single-record {
+    box-sizing: border-box;
+    height: 13rem;
+    width: 18rem;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.record-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #0C479D;
+    color: white;
+    font-weight: 600;
+    padding: 1.2rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.record-body {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: 1.5rem;
+    padding: 1.2rem 2rem;
+}
+
+.line {
+    display: flex;
+    justify-content: space-between;
+    color: #0C479D;
+    font-weight: 500;
+}
+
+button > a {
+    text-decoration: none;
+    color: white;
+}
