@@ -15,7 +15,8 @@ def signup(request):
     if form.is_valid():
         instance = form.save()
         Profile.objects.create(user=instance)
-        return redirect('login')
+        login(request, instance)
+        return redirect('profile')
     
     context={'form':form}
     return render(request, 'accounts/signup.html', context)
@@ -49,8 +50,23 @@ def profile(request):
     form = ProfileForm(request.POST or None, request.FILES or None, instance=profile)
 
     if form.is_valid():
-        form.save()
-        redirect('profile')
+        instance = form.save(commit=False)
+
+        cleaned_data = form.cleaned_data
+
+        for field_name, value in cleaned_data.items():
+            if field_name == 'is_complete' or field_name == 'user':
+                continue
+            if not value:
+                instance.save()
+                profile.is_complete = False
+                messages.error(request, "Complete your profile")
+                return redirect('profile')
+
+        instance.is_complete = True
+        instance.save()       
+
+        return redirect('patient_dashboard')
 
     context = {
         'profile': profile,

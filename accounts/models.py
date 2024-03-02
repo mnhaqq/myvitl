@@ -18,6 +18,7 @@ class Profile(models.Model):
     dob = models.DateField(blank=True, null=True)
     number = models.CharField(max_length=13, blank=True)
     profile_pic = models.ImageField(default='empty_avatar.jpg', upload_to='profile')
+    is_complete = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user.username}'s profile"

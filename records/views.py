@@ -1,11 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Record
+from django.contrib import messages
+
 
 # Create your views here.
 @login_required
 def patient_dashboard(request):
     user_profile = request.user.profile
+
+    if not user_profile.is_complete:
+        messages.error(request, "Complete your profile")
+        return redirect('profile')
+    
     user_records = Record.objects.filter(user=request.user)[:4:-1]
     no_records = len(user_records) == 0
     date_query = request.GET.get('date')

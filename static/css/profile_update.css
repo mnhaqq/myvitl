@@ -183,3 +183,10 @@ form input[type="text"], form input[type="tel"] {
 .confirm button:hover {
     background-color: #002c5a;
 }
+
+.error {
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-weight: 500;
+}
