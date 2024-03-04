@@ -28,7 +28,10 @@
             </div>
 
             <div class="options">
-                <button type="button">SCAN QR CODE</button>
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit">SCAN QR CODE</button>
+                </form>
                 <button type="button">DOWNLOAD RECORDS</button>
             </div>
 
@@ -51,7 +54,10 @@
             
             {% if no_records %}
                 <div class="scan">
-                    <button type="button"><span>+</span> Scan to display records</button>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <utton type="submit"><span>+</span> Scan to display records</button>
+                    </form>
                 </div>
             
             {% else %}
@@ -66,17 +72,17 @@
                             <div class="record-body">
                                 <div class="line">
                                     <div>Temperature</div>
-                                    <div>{{record.temperature}}°C</div>
+                                    <div>{{record.temperature}} °C</div>
                                 </div>
 
                                 <div class="line">
                                     <div>Heart Rate</div>
-                                    <div>{{record.heart_rate}}</div>
+                                    <div>{{record.heart_rate}} BPM</div>
                                 </div>
 
                                 <div class="line">
                                     <div>Sugar Level</div>
-                                    <div>{{record.sugar_level}}</div>
+                                    <div>{{record.sugar_level}} mmol/L</div>
                                 </div>
                             </div>
                         </div>

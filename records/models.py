@@ -7,7 +7,7 @@ class Record(models.Model):
     temperature = models.FloatField()
     heart_rate = models.PositiveIntegerField()
     sugar_level = models.PositiveIntegerField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(auto_now_add = True)
 
     def __str__(self) -> str:
         return f"{self.user.username}'s record on {self.date}"
