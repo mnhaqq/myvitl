@@ -6,7 +6,7 @@ class Record(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     temperature = models.FloatField()
     heart_rate = models.PositiveIntegerField()
-    sugar_level = models.PositiveIntegerField()
+    sugar_level = models.FloatField()
     date = models.DateTimeField(auto_now_add = True)
 
     def __str__(self) -> str:

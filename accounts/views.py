@@ -23,7 +23,7 @@ def signup(request):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('profile')
+        return redirect('patient_dashboard')
     
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -32,7 +32,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('profile')
+            return redirect('patient_dashboard')
         else:
             messages.warning(request, 'Invalid username or password')
             return redirect('login')
